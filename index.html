@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+
+<body id="main">
+
+  <script>
+    function url() {
+      const userurl = new String(document.getElementById('inp').value)
+      console.log(userurl)
+      const send = async () => {
+        const data = { url: userurl }
+        try {
+          const response = await fetch("https://nagzpy-redesigned-system-v7r7pqj4r553pwq-8080.preview.app.github.dev/data", {
+            mode: "cors",
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+        "Content-Type": "application/json"
+      }
+          })
+
+          const text = await response.text()
+          const pg = document.querySelector('html').innerHTML = text
+
+          
+        }
+        catch (error) {
+          console.log(1)
+          console.log(error)
+        }
+      }
+
+      
+      send()
+    }   
+  </script>
+
+  <form>
+    <input type="text" id='inp' />
+    <button type="button" onclick="url()">SUB</button>
+  </form>
+
+</body>
+
+</html>
